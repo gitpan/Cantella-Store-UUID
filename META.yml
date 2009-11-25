@@ -1,0 +1,37 @@
+---
+abstract: ~
+author:
+  - 'Guillermo Roditi (groditi) <groditi@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  FindBin: 0
+  Test::Exception: 0
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Cantella-Store-UUID
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Class::MOP: 0
+  Data::GUID: 0
+  File::Copy: 0
+  JSON: 0
+  Moose: 0
+  MooseX::Types::Data::GUID: 0
+  MooseX::Types::Path::Class: 0
+  Path::Class: 0.18
+  Sub::Exporter: 0
+  namespace::autoclean: 0
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/groditi/Cantella-Store-UUID
+version: 0.001000
