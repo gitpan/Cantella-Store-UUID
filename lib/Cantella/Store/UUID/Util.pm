@@ -5,7 +5,7 @@ use warnings;
 
 use Sub::Exporter -setup => { exports => [ '_mkdirs' ] };
 
-our $VERSION = '0.001000';
+our $VERSION = '0.002000';
 
 sub _mkdirs {
   my $dir = shift;
@@ -29,7 +29,9 @@ sub _mkdirs {
 
 __END__;
 
-=head1 NAME Cantella::Store::UUID::File
+=head1 NAME
+
+Cantella::Store::UUID::Util - Useful things that didn't belong in the objects
 
 =head1 SUBROUTINES
 
