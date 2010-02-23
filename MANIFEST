@@ -17,3 +17,4 @@ README
 t/load.t
 t/util.t
 t/uuid-store.t
+t/var/bubble.png

@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.91'
+generated_by: 'Module::Install version 0.92'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -24,14 +24,15 @@ requires:
   Class::MOP: 0
   Data::GUID: 0
   File::Copy: 0
+  File::MimeInfo: 0.15
   JSON: 0
   Moose: 0
-  MooseX::Types::Data::GUID: 0
-  MooseX::Types::Path::Class: 0
+  MooseX::Types::Data::GUID: 0.001000
+  MooseX::Types::Path::Class: 0.05
   Path::Class: 0.18
   Sub::Exporter: 0
-  namespace::autoclean: 0
+  namespace::autoclean: 0.09
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/groditi/Cantella-Store-UUID
-version: 0.002001
+version: 0.003000
