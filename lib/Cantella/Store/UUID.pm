@@ -11,7 +11,8 @@ use MooseX::Types::Path::Class qw/Dir/;
 
 use namespace::autoclean;
 
-our $VERSION = '0.003000';
+our $VERSION = '0.003001';
+$VERSION = eval $VERSION;
 
 has nest_levels => (
   is => 'ro',
