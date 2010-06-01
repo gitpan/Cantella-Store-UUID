@@ -36,4 +36,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/groditi/Cantella-Store-UUID
-version: 0.003001
+version: 0.003002
