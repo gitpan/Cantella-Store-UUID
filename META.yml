@@ -6,12 +6,12 @@ build_requires:
   Dir::Self: 0
   Directory::Scratch: 0
   ExtUtils::MakeMaker: 6.42
-  Test::Exception: 0
+  Test::Fatal: 0
   Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.99'
+generated_by: 'Module::Install version 1.00'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -35,5 +35,5 @@ requires:
   namespace::autoclean: 0.09
 resources:
   license: http://dev.perl.org/licenses/
-  repository: http://github.com/groditi/Cantella-Store-UUID
-version: 0.003002
+  repository: http://github.com/arcanez/Cantella-Store-UUID
+version: 0.003003

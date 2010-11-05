@@ -1,11 +1,9 @@
-#! /usr/bin/perl -w
-
 use strict;
 use warnings;
 
 use FindBin '$Bin';
 use Test::More;
-use Test::Exception;
+use Test::Fatal;
 
 use Path::Class qw(file dir);
 use Cantella::Store::UUID::Util '_mkdirs';
@@ -19,7 +17,7 @@ if( -e $tmp){
   plan tests => 514;
 }
 
-lives_ok { _mkdirs($tmp, 2) } '_mkdirs lives';
+is(exception { _mkdirs($tmp, 2) }, undef, '_mkdirs lives');
 
 #512
 for my $level_1 ( (0..9), qw(A B C D E F)){

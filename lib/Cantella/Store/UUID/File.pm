@@ -9,7 +9,7 @@ use MooseX::Types::Path::Class qw/Dir File/;
 
 use namespace::autoclean;
 
-our $VERSION = '0.002000';
+our $VERSION = '0.003003';
 
 has uuid => (is => 'ro', isa => GUID, coerce => 1, required => 1);
 has dir => (is => 'ro', isa => Dir,  coerce => 1);

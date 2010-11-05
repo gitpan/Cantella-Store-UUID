@@ -11,7 +11,7 @@ use MooseX::Types::Path::Class qw/Dir/;
 
 use namespace::autoclean;
 
-our $VERSION = '0.003002';
+our $VERSION = '0.003003';
 $VERSION = eval $VERSION;
 
 has nest_levels => (
@@ -36,6 +36,35 @@ has file_class => (
     return 'Cantella::Store::UUID::File';
   }
 );
+
+# File::Copy 2.10 introduced 'sub _eq' in lieu of a simple "$from eq $to" check
+# to enable checking of whether strings _or_ refs were identical. However, this
+# resulted in
+#
+# Argument "...." isn't numeric in numeric eq (==) at /usr/share/perl/5.10/File/Copy.pm line 70.
+#
+# this hack will implement File::Copy 2.13's version of 'sub _eq'
+
+# 5.8.8  File::Copy 2.09 -- ok
+# 5.9.5  File::Copy 2.10 -- broken
+# 5.8.9  File::Copy 2.13 -- ok
+# 5.10.0 File::Copy 2.11 -- broken
+# 5.10.1 File::Copy 2.14 -- ok
+
+if ($File::Copy::VERSION >= 2.10 && $File::Copy::VERSION <= 2.12) {
+  Class::MOP::Package->initialize('File::Copy')->add_package_symbol('&_eq' => sub {
+    my $Scalar_Util_loaded = eval q{ require Scalar::Util; require overload; 1 };
+    my ($from, $to) = map {
+        $Scalar_Util_loaded && Scalar::Util::blessed($_)
+           && overload::Method($_, q{""})
+            ? "$_"
+            : $_
+    } (@_);
+    return '' if ( (ref $from) xor (ref $to) );
+    return $from == $to if ref $from;
+    return $from eq $to;
+  });
+}
 
 sub from_uuid {
   my ($self, $uuid) = @_;

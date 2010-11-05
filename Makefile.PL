@@ -21,12 +21,12 @@ requires 'MooseX::Types::Data::GUID' => '0.001000';
 #tests
 test_requires 'Dir::Self';
 test_requires 'Test::More';
-test_requires 'Test::Exception';
+test_requires 'Test::Fatal';
 test_requires 'Directory::Scratch';
 
 resources(
   'license', => 'http://dev.perl.org/licenses/',
-  'repository', => 'http://github.com/groditi/Cantella-Store-UUID',
+  'repository', => 'http://github.com/arcanez/Cantella-Store-UUID',
 );
 
 WriteAll;

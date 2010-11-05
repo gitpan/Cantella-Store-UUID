@@ -5,7 +5,7 @@ use warnings;
 
 use Sub::Exporter -setup => { exports => [ '_mkdirs' ] };
 
-our $VERSION = '0.002000';
+our $VERSION = '0.003003';
 
 sub _mkdirs {
   my $dir = shift;

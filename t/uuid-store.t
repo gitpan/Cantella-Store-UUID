@@ -1,29 +1,37 @@
-#! /usr/bin/perl -w
-
 use strict;
 use warnings;
 
-use Test::More tests => 19;
-use Test::Exception;
+use Test::More;
+use Test::Fatal;
 use Directory::Scratch;
 
 use Dir::Self;
 use Data::GUID;
 use Path::Class qw(file dir);
-use Cantella::Store::UUID;
+
+use File::BaseDir qw(data_files);
+
+my @files = data_files('mime/globs');
+unless (@files) {
+  plan(skip_all => "Skipping tests, you don't seem to have a mime-info database. The shared-mime-info package is available from http://freedesktop.org/");
+} else {
+  plan(tests => 20);
+}
 
 sub main {
   my $scratch_dir = Directory::Scratch->new;
   my $test_file = $scratch_dir->touch('test1.txt', 'This is test file 1');
   my $root_dir = $scratch_dir->base->subdir('docroot');
 
+  use_ok('Cantella::Store::UUID');
+
   my $dr;
-  lives_ok {
+  is(exception {
     $dr = Cantella::Store::UUID->new(
       root_dir => $root_dir,
       nest_levels => 2,
     );
-  } 'instantiating store';
+  }, undef, 'instantiating store');
   isa_ok($dr, 'Cantella::Store::UUID');
 
   {
@@ -35,17 +43,18 @@ sub main {
     );
   }
 
-  lives_ok { $dr->deploy } 'deploy successful';
+  is(exception { $dr->deploy }, undef, 'deploy successful');
 
   my $meta = { foo => 'bar' };
   my $check_file;
   my $uuid = $dr->new_uuid;
   my $uuid2 = $dr->new_uuid;
   isa_ok($uuid, 'Data::GUID');
-  lives_ok{
+
+  is(exception {
     $check_file = $dr->create_file($test_file, $uuid, $meta);
     $dr->create_file($test_file, $uuid2, {foo => 'baz'});
-  } 'create_file';
+  }, undef, 'create_file');
 
   is($check_file->path->slurp, $test_file->slurp, 'contents survived');
   is_deeply(

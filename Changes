@@ -1,4 +1,8 @@
-0.003001 2010-06-01 13:00EST
+0.003003 2010-11-05 10:00EST
+ - use Test::Fatal instead of Test::Exception for tests
+ - skip tests if shared-mime-info isn't installed
+ - add fix for "sub _eq" in File::Copy 2.10-2.12
+0.003002 2010-06-01 13:00EST
  - Messed up release
 0.003001 2010-06-01 12:00EST
  - Add Dir::Self to the list of test deps. No other changes.
